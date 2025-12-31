@@ -7,22 +7,16 @@ import requests
 from io import BytesIO
 from pathlib import Path
 
-# -------------------------------------------------
-# PATH SETUP (FIXED, SAFE)
-# -------------------------------------------------
+
 BASE_DIR = Path(__file__).resolve().parent
 MODELS_DIR = BASE_DIR / "models"
 SCRIPTS_DIR = BASE_DIR / "Scripts"
 
-# -------------------------------------------------
-# LOAD STATIC FILES (ONCE)
-# -------------------------------------------------
+
 with open(SCRIPTS_DIR / "onehot_columns.pkl", "rb") as f:
     onehot_columns = pickle.load(f)
 
-# -------------------------------------------------
-# YOUR ORIGINAL LOGIC (UNCHANGED)
-# -------------------------------------------------
+
 def score(colname: str, data: pd.DataFrame) -> pd.DataFrame:
     for index, i in enumerate(data[colname]):
         if i <= 9:
@@ -43,9 +37,7 @@ stress_questions = ["Q1A","Q6A","Q8A","Q11A","Q12A","Q14A","Q18A","Q22A","Q27A",
 
 words = ["VCL1","VCL2","VCL3","VCL4","VCL5","VCL7","VCL8","VCL10","VCL11","VCL13","VCL14","VCL15","VCL16"]
 
-# -------------------------------------------------
-# DATA PREPARATION (REFactored, SAME OUTPUT)
-# -------------------------------------------------
+
 def main():
     onedrive_url = "https://bennettu-my.sharepoint.com/personal/e23cseu0615_bennett_edu_in/_layouts/15/download.aspx?share=EQLLM6GDZKVHli4aSWFVGccB587D3Qpr40bJZlQA9NoxGA"
     response = requests.get(onedrive_url)
@@ -91,9 +83,7 @@ def main():
     return encoded_np
 
 
-# -------------------------------------------------
-# PREDICTION FUNCTIONS (FIXED, SAME PURPOSE)
-# -------------------------------------------------
+
 def predict_depression():
     data = main()
 
@@ -111,7 +101,7 @@ def predict_anxiety():
 
     model = pickle.load(open(MODELS_DIR / "xgc_model1_anxiety.pkl", "rb"))
 
-    # 🔥 FINAL GUARANTEE: match model feature count
+    
     n_features = model.n_features_in_
     data = data[:, :n_features]
 
