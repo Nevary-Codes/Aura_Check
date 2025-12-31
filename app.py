@@ -7,9 +7,7 @@ from flask import session
 
 
 
-# --------------------
-# APP CONFIG
-# --------------------
+
 app = Flask(
     __name__,
     template_folder="templates",
@@ -19,9 +17,7 @@ app.secret_key = "aura_check_secret"
 CORS(app)
 api = Api(app)
 
-# --------------------
-# WEBSITE ROUTES
-# --------------------
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -38,9 +34,7 @@ def schedule():
 def tech():
     return render_template("tech.html")
 
-# --------------------
-# AUTH ROUTES (TEMP / HACKATHON SAFE)
-# --------------------
+
 @app.route("/login", methods=["POST"])
 def login():
     email = request.form.get("email")
@@ -91,9 +85,7 @@ def form_submitted():
     session["form_done"] = True
     return redirect("https://forms.office.com/r/YyrrV7SUKs")
 
-# --------------------
-# API RESOURCES
-# --------------------
+
 class TestAPI(Resource):
     def get(self):
         return {"message": "Aura Check API is running"}
@@ -122,17 +114,13 @@ class StressPrediction(Resource):
         except Exception as e:
             return {"error": str(e)}, 500
 
-# --------------------
-# REGISTER API ROUTES
-# --------------------
+
 api.add_resource(TestAPI, "/api")
 api.add_resource(DepressionPrediction, "/api/depression")
 api.add_resource(AnxietyPrediction, "/api/anxiety")
 api.add_resource(StressPrediction, "/api/stress")
 
-# --------------------
-# RUN SERVER
-# --------------------
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5500))
     app.run(host="0.0.0.0", port=port, debug=False)
