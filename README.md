@@ -1,55 +1,163 @@
-# 🌟 Aura Check – Stress Level Analysis Tool
+# 🌟 Aura Check – AI-Powered Stress Level Analysis Tool
 
-**Aura Check** is a modern web-based application built to help users assess and manage their stress levels through personalized evaluations, interactive content, machine learning predictions, and data-driven insights.
+**Aura Check** is a full-stack, AI-powered web application designed to help users assess, understand, and manage their stress levels through structured questionnaires, machine learning predictions, and personalized insights.
 
----
-
-## 🧠 What It Does
-
-Aura Check is designed to:
-- Help users identify stress levels via a custom questionnaire.
-- Predict stress scores using Machine Learning models trained on real-world datasets.
-- Offer tailored coping mechanisms like mindfulness exercises and time management tips.
-- Provide intuitive progress tracking and reminders.
-- Ensure user privacy and secure data handling.
+The platform combines **modern web design**, **machine learning**, and **data-driven decision-making** to deliver a seamless mental well-being assessment experience.
 
 ---
 
-## 🎯 Features
+## 🔗 Live Demo
 
-✅ Automated Stress Evaluation  
-✅ Machine Learning-based Stress Prediction  
-✅ Cleaned Dataset & Preprocessed Features  
-✅ Boosting Models for Enhanced Accuracy  
-✅ Personalized Coping Strategies  
-✅ Progress Tracking & Email Reminders  
-✅ Secure & Confidential User Experience  
-✅ Dynamic Testimonials and Visual Enhancements
+🚀 **Demo URL:**  
+> _Coming Soon_ (will be updated after deployment)
 
 ---
 
-## 🧠 Machine Learning Highlights
+## 🧠 What Aura Check Does
 
-- **Data Cleaning & Preprocessing**:  
-  Raw questionnaire data was cleaned, normalized, and encoded to improve model performance.
+Aura Check helps users:
 
-- **Modeling**:  
-  Used multiple models including **XGBoost**, **Gradient Boosting**, and **Random Forest** to predict the user's stress score.
+- Assess their stress levels through a structured questionnaire.
+- Predict stress, anxiety, and depression scores using trained ML models.
+- Gain awareness about their mental well-being through data-backed insights.
+- Access helpful coping strategies and informational content.
+- Navigate a clean, interactive, and responsive web interface.
 
-- **Evaluation**:  
-  Models were evaluated using metrics like **RMSE** and **R² Score** to ensure reliable predictions.
+---
 
-- **Integration**:  
-  Backend ML logic is seamlessly integrated with the frontend interface for real-time prediction.
+## ✨ Key Features
+
+✅ User-friendly Login & Quiz Interface  
+✅ Automated Stress, Anxiety & Depression Prediction  
+✅ Machine Learning–based Score Estimation  
+✅ Cleaned & Preprocessed Psychological Dataset  
+✅ Boosting Models for Improved Prediction Accuracy  
+✅ Multi-page Responsive Web UI  
+✅ Secure and Privacy-Focused Design  
+✅ Integrated Backend + Frontend ML Pipeline  
+
+---
+
+## 🤖 Machine Learning Highlights
+
+### 🔹 Data Preparation
+- Cleaned raw questionnaire responses.
+- Handled missing values and categorical encoding.
+- Applied one-hot encoding for high-cardinality features.
+- Ensured strict feature alignment between training and inference.
+
+### 🔹 Models Used
+- **XGBoost**
+- **Gradient Boosting**
+- **Random Forest**
+
+These models were trained to predict:
+- Stress Level
+- Anxiety Level
+- Depression Level
+
+### 🔹 Model Evaluation
+- RMSE (Root Mean Squared Error)
+- R² Score
+
+Models were selected based on performance and stability during validation.
+
+### 🔹 Deployment-Ready Inference
+- Feature-shape consistency enforced at runtime.
+- Optimized preprocessing pipeline for real-time predictions.
+- Backend predictions integrated seamlessly with frontend UI.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Design**: Responsive layout with custom CSS animations & transitions
-- **Icons**: Font Awesome + Custom illustrations
-- **Machine Learning**:
-  - Scikit-learn, XGBoost
-  - Pandas & NumPy for data manipulation
-  - Jupyter Notebooks for model experimentation
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Responsive UI with custom animations
+- Font Awesome icons
+
+### Backend
+- Python
+- Flask
+- Flask-RESTful
+- Flask-CORS
+- Gunicorn (production server)
+
+### Machine Learning
+- Scikit-learn
+- XGBoost
+- Pandas
+- NumPy
+
+### Tools & Platforms
+- Git & GitHub
+- Render (Deployment)
+- Microsoft Forms (Questionnaire Input)
+- Jupyter Notebook (Model Development)
+
+---
+
+## 🗂 Project Structure
+
+Aura_Check/
+│
+├── app.py # Flask application
+├── script.py # ML preprocessing & prediction logic
+├── requirements.txt
+│
+├── templates/ # HTML templates
+│ ├── index.html
+│ ├── quiz.html
+│ ├── schedule.html
+│ └── tech.html
+│
+├── static/ # CSS, images, assets
+│ ├── css/
+│ └── img/
+│
+├── models/ # Trained ML models (.pkl)
+└── Scripts/
+└── onehot_columns.pkl # Feature alignment file
+
+
+---
+
+## 🚀 Deployment
+
+The application is deployed using **Render** with:
+- `gunicorn` as the production WSGI server
+- Environment-based port handling
+- Optimized for free-tier cloud hosting
+
+---
+
+## 🔐 Privacy & Security
+
+- No sensitive user data is stored.
+- Predictions are generated dynamically at runtime.
+- Designed with user confidentiality in mind.
+
+---
+
+## 📌 Future Enhancements
+
+- User authentication with sessions
+- Database integration for progress tracking
+- Visualization dashboards for stress trends
+- Model explainability (SHAP)
+- Email or notification-based reminders
+
+---
+
+## 👨‍💻 Author
+
+**Aura Check** was built as a hackathon and portfolio project to demonstrate:
+
+- End-to-end ML deployment
+- Real-world preprocessing challenges
+- Full-stack application development
+- AI integration in mental health applications
+
+---
