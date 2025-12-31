@@ -9,7 +9,11 @@ The platform combines **modern web design**, **machine learning**, and **data-dr
 ## 🔗 Live Demo
 
 🚀 **Demo URL:**  
-> _Coming Soon_ (will be updated after deployment)
+🚀 Demo URL: https://aura-check.onrender.com
+
+![Render](https://img.shields.io/badge/Deployed%20on-Render-blue)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+
 
 ---
 
