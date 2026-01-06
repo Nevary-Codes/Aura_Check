@@ -1,116 +1,109 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
-<html lang="en" dir="ltr">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Aura Check - Login</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-    <!-- Fontawesome CDN -->
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-
+    <title>Aura Check | AI-Powered Stress Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
 <body>
-  <div class="container">
 
-    <!-- Flip Checkbox -->
-    <input type="checkbox" id="flip">
-
-    <!-- Image Cover -->
-    <div class="cover">
-      <div class="front">
-        <img src="{{ url_for('static', filename='img/girl.jpg') }}" alt="Login Image">
-      </div>
-      <div class="back">
-        <img class="backImg" src="{{ url_for('static', filename='img/boy.jpg') }}" alt="Signup Image">
-      </div>
-    </div>
-
-    <!-- Forms -->
-    <div class="forms">
-      <div class="form-content">
-
-        <!-- ================= LOGIN FORM ================= -->
-        <div class="login-form">
-          <div class="title">Login</div>
-
-          <form method="POST" action="/login">
-            <div class="input-boxes">
-
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="email" name="email"
-                       placeholder="Enter your email" required>
-              </div>
-
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" name="password"
-                       placeholder="Enter your password" required>
-              </div>
-
-              <div class="text">
-                <a href="#">Forgot password?</a>
-              </div>
-
-              <div class="button input-box">
-                <input type="submit" value="Submit">
-              </div>
-
-              <div class="text sign-up-text">
-                Don't have an account?
-                <label for="flip">Signup now</label>
-              </div>
-
-            </div>
-          </form>
+    <header class="hero">
+        <div class="container">
+            <h1>Aura Check</h1>
+            <h2>AI-Powered Stress Level Analysis Platform</h2>
+            <p>Understand your stress levels using machine-learning models trained on real psychological survey data.</p>
+            <a href="https://forms.office.com/r/YyrrV7SUKs" target="_blank" class="cta-button">Take Stress Analysis</a>
         </div>
+    </header>
 
-        <!-- ================= SIGNUP FORM ================= -->
-        <div class="signup-form">
-          <div class="title">Signup</div>
-
-          <form method="POST" action="/signup">
-            <div class="input-boxes">
-
-              <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" name="name"
-                       placeholder="Enter your name" required>
-              </div>
-
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="email" name="email"
-                       placeholder="Enter your email" required>
-              </div>
-
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" name="password"
-                       placeholder="Enter your password" required>
-              </div>
-
-              <div class="button input-box">
-                <input type="submit" value="Submit">
-              </div>
-
-              <div class="text sign-up-text">
-                Already have an account?
-                <label for="flip">Login now</label>
-              </div>
-
+    <section class="about">
+        <div class="container grid">
+            <div class="about-text">
+                <h3>What is Aura Check?</h3>
+                <p>Aura Check is not a quiz; it is an AI-driven analysis system. Predictions are based on structured survey responses processed through advanced algorithms.</p>
+                <p><strong>Aura Check is designed as a demonstration of how machine learning can be used to analyze mental health indicators in a responsible, privacy-first way.</strong></p>
             </div>
-          </form>
+            <div class="about-visual">
+                <div class="glass-card">AI Analysis Engine</div>
+            </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </div>
+    <section class="how-it-works">
+        <div class="container">
+            <h3 class="section-title">How It Works</h3>
+            <div class="flow">
+                <div class="step">
+                    <div class="icon">1</div>
+                    <p>User fills out a structured stress questionnaire (Microsoft Form)</p>
+                </div>
+                <div class="step">
+                    <div class="icon">2</div>
+                    <p>Responses are securely collected</p>
+                </div>
+                <div class="step">
+                    <div class="icon">3</div>
+                    <p>Data is processed using feature engineering</p>
+                </div>
+                <div class="step">
+                    <div class="icon">4</div>
+                    <p>Trained ML models analyze stress patterns</p>
+                </div>
+                <div class="step">
+                    <div class="icon">5</div>
+                    <p>A stress analysis report is generated</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack">
+        <div class="container">
+            <h3 class="section-title">Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-card">Python</div>
+                <div class="tech-card">Flask</div>
+                <div class="tech-card">Machine Learning</div>
+                <div class="tech-card">XGBoost</div>
+                <div class="tech-card">Pandas & NumPy</div>
+                <div class="tech-card">Microsoft Forms</div>
+                <div class="tech-card">REST APIs</div>
+                <div class="tech-card">Cloud Deployment</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h3 class="section-title">Why This Project is Different</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Privacy-First</h4>
+                    <p>No user accounts or identity storage.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Real ML Models</h4>
+                    <p>Built on predictive algorithms, not simple if-else rules.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Explainability</h4>
+                    <p>Focus on transparent, data-backed predictions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Aura Check</strong></p>
+            <p>Built for learning, research, and AI system demonstration</p>
+            <div class="footer-links">
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

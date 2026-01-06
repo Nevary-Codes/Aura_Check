@@ -1,125 +1,81 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
-from flask_restful import Resource, Api
+from flask import Flask, render_template, redirect, url_for, jsonify
 from flask_cors import CORS
-import script
 import os
-from flask import session
-
-
-
+import script
 
 app = Flask(
     __name__,
     template_folder="templates",
     static_folder="static"
 )
-app.secret_key = "aura_check_secret"
-CORS(app)
-api = Api(app)
 
+CORS(app)
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
-@app.route("/quiz")
-def quiz():
-    return render_template("quiz.html")
 
-@app.route("/schedule")
-def schedule():
-    return render_template("schedule.html")
+@app.route("/result")
+def result():
+    """
+    Fetches latest Microsoft Form submission via script.py,
+    runs ML models, and renders result page.
+    """
 
-@app.route("/tech")
-def tech():
-    return render_template("tech.html")
+    try:
+        stress = script.predict_stress()
+        anxiety = script.predict_anxiety()
+        depression = script.predict_depression()
 
+        # Map numeric outputs to labels
+        def map_level(val):
+            if val <= 1:
+                return "Low"
+            elif val == 2:
+                return "Moderate"
+            else:
+                return "High"
 
-@app.route("/login", methods=["POST"])
-def login():
-    email = request.form.get("email")
-    password = request.form.get("password")
+        stress_label = map_level(stress)
+        anxiety_label = map_level(anxiety)
+        depression_label = map_level(depression)
 
-    # Temporary validation (can add DB later)
-    if email and password:
-        return redirect(url_for("quiz"))
-
-    return redirect(url_for("home"))
-
-
-@app.route("/signup", methods=["POST"])
-def signup():
-    name = request.form.get("name")
-    email = request.form.get("email")
-    password = request.form.get("password")
-
-    if name and email and password:
-        return redirect(url_for("quiz"))
-
-    return redirect(url_for("home"))
-
-
-@app.route("/predict")
-def predict():
-    if not session.get("form_done"):
-        return render_template(
-            "quiz.html",
-            error="Please complete the questionnaire first."
+        # Determine primary severity class for UI color
+        severity_class = (
+            "high" if stress_label == "High"
+            else "moderate" if stress_label == "Moderate"
+            else "low"
         )
 
-    anxiety = script.predict_anxiety()
-    depression = script.predict_depression()
-    stress = script.predict_stress()
+        return render_template(
+            "result.html",
+            stress=stress_label,
+            anxiety=anxiety_label,
+            depression=depression_label,
+            severity_class=severity_class
+        )
 
-    return render_template(
-        "quiz.html",
-        result={
-            "anxiety": anxiety,
-            "depression": depression,
-            "stress": stress
-        }
-    )
-
-@app.route("/form-submitted")
-def form_submitted():
-    session["form_done"] = True
-    return redirect("https://forms.office.com/r/YyrrV7SUKs")
+    except Exception as e:
+        return render_template(
+            "result.html",
+            error=str(e)
+        )
 
 
-class TestAPI(Resource):
-    def get(self):
-        return {"message": "Aura Check API is running"}
-
-class DepressionPrediction(Resource):
-    def get(self):
-        try:
-            pred = int(script.predict_depression())
-            return {"prediction": pred}
-        except Exception as e:
-            return {"error": str(e)}, 500
-
-class AnxietyPrediction(Resource):
-    def get(self):
-        try:
-            pred = int(script.predict_anxiety())
-            return {"prediction": pred}
-        except Exception as e:
-            return {"error": str(e)}, 500
-
-class StressPrediction(Resource):
-    def get(self):
-        try:
-            pred = int(script.predict_stress())
-            return {"prediction": pred}
-        except Exception as e:
-            return {"error": str(e)}, 500
+@app.route("/api/stress")
+def api_stress():
+    return jsonify({"stress": script.predict_stress()})
 
 
-api.add_resource(TestAPI, "/api")
-api.add_resource(DepressionPrediction, "/api/depression")
-api.add_resource(AnxietyPrediction, "/api/anxiety")
-api.add_resource(StressPrediction, "/api/stress")
+@app.route("/api/anxiety")
+def api_anxiety():
+    return jsonify({"anxiety": script.predict_anxiety()})
 
+
+@app.route("/api/depression")
+def api_depression():
+    return jsonify({"depression": script.predict_depression()})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5500))

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Check | Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="results-header">
+        <div class="container">
+            <h1>Aura Check – Stress Analysis Result</h1>
+            <p class="subtitle">AI-generated insights based on your questionnaire responses</p>
+            <hr class="header-divider">
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="result-summary">
+            <div class="summary-card {{ severity_class }}">
+                <h2 class="severity-text">Stress Level: {{ stress }}</h2>
+                <p>This result reflects patterns detected by the trained machine learning model based on your current inputs.</p>
+            </div>
+        </section>
+
+        <section class="detailed-breakdown">
+            <div class="grid-three">
+                <div class="metric-card">
+                    <h3>Stress</h3>
+                    <div class="metric-value">{{ stress }}</div>
+                    <p>Analysis indicates elevated physiological tension markers.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Anxiety</h3>
+                    <div class="metric-value">{{ anxiety }}</div>
+                    <p>Minimal indicators of persistent cognitive apprehension.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Depression</h3>
+                    <div class="metric-value">{{ depression }}</div>
+                    <p>Response patterns align with baseline mood indicators.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guidance">
+            <div class="text-block">
+                <h3>Interpretation</h3>
+                <p>These results represent a data-driven snapshot of your responses. While the model identifies certain indicators of stress, these patterns can be influenced by transient environmental factors or recent events. We encourage using these insights as a tool for self-reflection and proactive wellness management.</p>
+                <p class="disclaimer"><strong>Note:</strong> This analysis is for educational purposes only and does not constitute a medical diagnosis or clinical evaluation.</p>
+            </div>
+        </section>
+
+        <section class="explainability">
+            <h3 class="section-title">How the AI Made This Prediction</h3>
+            <div class="pipeline">
+                <div class="pipeline-step">
+                    <span class="step-num">01</span>
+                    <p>Questionnaire responses converted into numerical features.</p>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-num">02</span>
+                    <p>Feature engineering applied to calculate weighted indicators.</p>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-num">03</span>
+                    <p>Data aligned to training schema for model compatibility.</p>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-num">04</span>
+                    <p>XGBoost gradient boosting models used for multi-output prediction.</p>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-num">05</span>
+                    <p>Statistical outputs mapped to validated stress indicators.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="transparency">
+            <h3 class="section-title">Model & Data Transparency</h3>
+            <div class="transparency-grid">
+                <div class="info-item">
+                    <strong>Model Architecture</strong>
+                    <p>XGBoost (Extreme Gradient Boosting)</p>
+                </div>
+                <div class="info-item">
+                    <strong>Input Framework</strong>
+                    <p>Structured Psychological Survey Data</p>
+                </div>
+                <div class="info-item">
+                    <strong>Data Privacy</strong>
+                    <p>No PII (Personally Identifiable Information) stored.</p>
+                </div>
+                <div class="info-item">
+                    <strong>Limitations</strong>
+                    <p>Dependent on self-reported data; represents a single snapshot in time.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="action-footer">
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+            <a href="https://forms.office.com/r/YyrrV7SUKs" class="btn btn-outline">Retake Analysis</a>
+        </footer>
+
+    </main>
+
+</body>
+</html>
